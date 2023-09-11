@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GabryOsas - Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F0F4F8;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+        h1 {
+            font-size: 2.5rem;
+        }
+        p {
+            font-size: 1.5rem;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            background-color: #3498db;
+            display: flex;
+            justify-content: center;
+        }
+        nav li {
+            margin: 0 1rem;
+        }
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.2rem;
+            border: 2px solid transparent;
+            border-radius: 5px;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
+        }
+        nav a:hover {
+            background-color: white;
+            color: #3498db;
+            border-color: #3498db;
+            transform: scale(1.05);
+        }
+        section {
+            background-color: white;
+            margin: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            height: 100px; 
+            overflow: hidden; 
+            transition: height 0.3s ease-in-out, padding 0.3s ease-in-out; 
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        section h2 {
+            margin: 20px 0 0;
+        }
+        section p {
+            margin: 0;
+            display: none; 
+        }
+        section.expanded p {
+            display: block; 
+        }
+        section.expanded {
+            height: 300px; 
+            padding: 2rem; 
+        }
+        section:hover {
+            cursor: pointer; 
+        }
+        h2 {
+            color: #3498db;
+        }
+        #portfolio a {
+            color: #3498db; 
+            text-decoration: none;
+            transition: color 0.3s; 
+        }
+        #portfolio a:hover {
+            color: #00bcd4;
+        }
+        #contact-form {
+            display: none; 
+            text-align: center;
+        }
+        #contact-form input[type="text"],
+        #contact-form textarea,
+        #contact-form button {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #3498db;
+            border-radius: 5px;
+            width: 80%;
+            font-size: 1rem;
+        }
+        #contact-form button {
+            background-color: #3498db;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #contact-form button:hover {
+            background-color: #2763a4;
+        }
+        section.expanded #contact-form {
+            display: block;
+        }
+        #contact-form input[type="text"],
+        #contact-form textarea,
+        #contact-form button {
+            pointer-events: auto;
+        }
+        #success-message,
+        #error-message {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+            animation: fadeOut 5s forwards;
+        }
+        #success-message {
+            background-color: lime;
+            color: white;
+        }
+        #error-message {
+            background-color: #ff6b6b;
+            color: white;
+        }
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                transform: translateX(50px); 
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>GabryOsas</h1>
+        <p>Java developer</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#about" onclick="toggleSection('about')">Chi Sono</a></li>
+            <li><a href="#portfolio" onclick="toggleSection('portfolio')">Portfolio</a></li>
+            <li><a href="#contact" onclick="toggleSection('contact')">Contattami</a></li>
+        </ul>
+    </nav>
+    <section id="about" onclick="toggleSection('about')">
+        <h2>Chi Sono</h2>
+        <p>Ciao! 👋 Sono GabryOsas</p>
+        <p>Sono un Developer livello base e conosco discretamente il linguaggio Java.</p>
+        <p>Lavoro attivamente nella community del roleplay sviluppando plugin che possono tornare utili.</p>
+        <p>Per la comunicazione uso principalmente <a href="https://t.me/GabryOsas" target="_blank" rel="noopener noreferrer" style="color: #3498db;">Telegram</a> e <a href="https://github.com/GabryOsas" target="_blank" rel="noopener noreferrer" style="color: #3498db;">GitHub.</a></p>
+    </section>
+    <section id="portfolio" onclick="toggleSection('portfolio')">
+        <h2>Portfolio</h2>
+        <p>Il mio progetto più grande in questo momento è <a href="https://t.me/FiftyRP" target="_blank" rel="noopener noreferrer" style="color: #3498db;">FiftyRP</a>, un server roleplay su Minecraft.</p>
+        <p>Il mio secondo progetto più grande è <a href="https://github.com/GabryOsas/QAProiettile" target="_blank" rel="noopener noreferrer" style="color: #3498db;">QAProiettile</a>, che aggiunge le ferite da proiettile su Minecraft.</p>
+        <p>Infine sono CEO del canale <a href="https://t.me/GMDIdevelopment" target="_blank" rel="noopener noreferrer" style="color: #3498db;">GMDIDevelopment</a>; codesto canale pubblica / sviluppa plugin a pagamento e non.
+    </section>
+    <section id="contact" onclick="toggleSection('contact')">
+        <h2>Contattami</h2>
+        <p>Sezione in manutenzione ;P</p>
+        <div id="contact-form" class="expanded">
+            <input type="text" placeholder="Email" onclick="stopPropagation(event)">
+            <textarea placeholder="Contenuto" onclick="stopPropagation(event)"></textarea>
+            <button onclick="stopPropagation(event); showMessage()">Invia</button>
+        </div>
+    </section>
+    <div id="success-message">Email inviata con successo!</div>
+    <div id="error-message">Email non trovata!</div>
+    <script>
+        let activeSection = null;
+
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (activeSection && activeSection !== section) {
+                activeSection.classList.remove('expanded');
+            }
+
+            section.classList.toggle('expanded');
+            activeSection = section;
+        }
+        function stopPropagation(event) {
+            event.stopPropagation();
+        }
+        function showMessage() {
+            const successMessage = document.getElementById('success-message');
+            const errorMessage = document.getElementById('error-message');
+            const emailInput = document.querySelector('#contact-form input[type="text"]');
+            const emailValue = emailInput.value.trim();
+            if (emailValue === '') {
+                errorMessage.style.display = 'block';
+                setTimeout(() => {
+                    errorMessage.style.display = 'none';
+                }, 5000); 
+            } else {
+                successMessage.style.display = 'block';
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 5000); 
+            }
+        }
+    </script>
+</body>
+</html>
